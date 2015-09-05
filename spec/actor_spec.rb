@@ -37,20 +37,9 @@ describe "Actor" do
 
   it "can build its associated shows through its characters" do
     # TODO in one line, build a show and a character for this actor
-	#actor.characters.build(name: "Char").build_show(name: "Show")
-    actor = Actor.new(first_name: "John", last_name: "Doe")
-	char = actor.characters.build(name: "Char")
-	expect(char.class).to eq(Character)
-	expect(actor.characters.size).to eq(1)
-	expect(actor.characters[0].name).to eq("Char")
-    show = char.build_show(name: "Show")
-	expect(show.class).to eq(Show)
-	expect(char.show).to eq(show)
-	expect(char.show.name).to eq("Show")
-	expect(show.characters.size).to eq(1)
-	expect(show.characters[0].name).to eq("Char")
-    	
-    expect(actor.shows.select{ |show| show.name == "Show" }.size).to eq(1)	
+	actor.characters.build(name: "Char").build_show(name: "Show")
+    expect(actor.characters.size).to eq(1)
+    expect(actor.characters[0].show.name).to eq("Show")
   end
 
   it "can list its full name" do
@@ -73,7 +62,7 @@ describe "Actor" do
 	characters[0].build_show(name: "People")
 	characters[1].show = characters[0].show
 	characters[2].build_show(name: "Pets")
-	characters[3].show = characters[3].show
+	characters[3].show = characters[2].show
 	
 	str = "Man - People\nWoman - People\nCat - Pets\nDog - Pets\n"
 	expect(actor.list_roles).to eq(str)

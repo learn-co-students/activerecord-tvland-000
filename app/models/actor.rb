@@ -7,8 +7,9 @@ class Actor < ActiveRecord::Base
   end
 
   def list_roles
-    characters.reduce("") do |str, ch|
-	  str << "#{ch.name} - #{ch.show.name}\n"
-	end
+    characters.reduce("") do |a, e|
+	    #binding.pry
+      a << "#{e.name} - #{e.show.name}\n"
+	  end
   end  
 end
