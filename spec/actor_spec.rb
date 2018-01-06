@@ -14,6 +14,7 @@ describe "Actor" do
     expect(actor.first_name).to eq("Emilia")
     expect(actor.last_name).to eq("Clarke")
   end
+  
 
   it "has associated characters in an array" do
     # Hint: think about what migration you'll need to write so that an actor can have many characters.
